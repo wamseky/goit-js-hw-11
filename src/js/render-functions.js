@@ -1,4 +1,4 @@
-export function renderMurcup(data) {
+export function renderMarkup(data) {
     return data.hits
       .map(
         element => `<div class="gallery-item">
