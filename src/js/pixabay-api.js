@@ -16,17 +16,17 @@ export function fetchData(searchQuery) {
 
   loader.style.display = 'block';
 
-  // form.addEventListener('submit', handleSubmit);
+  form.addEventListener('submit', handleSubmit);
 
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   const form = event.target;
-  //   const searchQuery = form.elements.searchQuery.value.trim();
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const searchQuery = form.elements.searchQuery.value.trim();
 
-  //   if (searchQuery === '') {
-  //     return;
-  //   }
-  // }
+    if (searchQuery === '') {
+      return;
+    }
+  }
 
   return fetch(`${BASE_URL}?${params}`)
     .then(response => {
