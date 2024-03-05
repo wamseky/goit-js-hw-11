@@ -1,4 +1,3 @@
-import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const API_KEY = '42569915-bcd29008899db620988a57306';
@@ -15,18 +14,6 @@ export function fetchData(searchQuery) {
   });
 
   loader.style.display = 'block';
-
-  form.addEventListener('submit', handleSubmit);
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const searchQuery = form.elements.searchQuery.value.trim();
-
-    if (searchQuery === '') {
-      return;
-    }
-  }
 
   return fetch(`${BASE_URL}?${params}`)
     .then(response => {
@@ -54,3 +41,15 @@ export function fetchData(searchQuery) {
     })
     .catch(error => console.error('Error fetching data:', error));
 }
+
+// form.addEventListener('submit', handleSubmit);
+
+//   function handleSubmit(event) {
+//     event.preventDefault();
+//     const form = event.target;
+//     const searchQuery = form.elements.searchQuery.value.trim();
+
+//     if (searchQuery === '') {
+//       return;
+//     }
+//   }
