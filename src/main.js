@@ -21,22 +21,15 @@ function onSubmit(event) {
 
   searchQuery = form.elements.searchQuery.value.trim();
 
+  if (searchQuery === '') {
+    alert('Enter your request')
+    container.innerHTML = ""
+    return;
+  }
   fetchData(searchQuery).then(data => {
     const markup = renderMarkup(data);
     container.insertAdjacentHTML('beforeend', markup);
     lightbox.refresh();
   })
     .catch((error) => console.error("Error fetching data:", error));
-}
-form.addEventListener('submit', handleSubmit)
-function handleSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const searchQuery = form.elements.searchQuery.value.trim();
-
-  if (searchQuery === '') {
-    alert('Enter your request')
-    container.innerHTML = ""
-    return;
-  }
 };
