@@ -41,15 +41,3 @@ export function fetchData(searchQuery) {
     })
     .catch(error => console.error('Error fetching data:', error));
 }
-
-// form.addEventListener('submit', handleSubmit);
-
-//   function handleSubmit(event) {
-//     event.preventDefault();
-//     const form = event.target;
-//     const searchQuery = form.elements.searchQuery.value.trim();
-
-//     if (searchQuery === '') {
-//       return;
-//     }
-//   }

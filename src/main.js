@@ -1,8 +1,8 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-import { fetchData } from "./js/pixabay-api.js";
-import { renderMurcup } from "./js/render-functions.js";
+import { fetchData } from "./js/pixabay-api";
+import { renderMarkup } from "./js/render-functions";
 
 const lightbox = new SimpleLightbox(".gallery-link", {
   captionsData: "alt",
@@ -22,9 +22,20 @@ function onSubmit(event) {
   searchQuery = form.elements.searchQuery.value.trim();
 
   fetchData(searchQuery).then(data => {
-    const murcup = renderMurcup(data);
-    container.insertAdjacentHTML('beforeend', murcup);
+    const markup = renderMarkup(data);
+    container.insertAdjacentHTML('beforeend', markup);
     lightbox.refresh();
   })
     .catch((error) => console.error("Error fetching data:", error));
 }
+form.addEventListener('submit', handleSubmit)
+function handleSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const searchQuery = form.elements.searchQuery.value.trim();
+
+  if (searchQuery === '') {
+    alert('Enter your request')
+    return;
+  }
+};
