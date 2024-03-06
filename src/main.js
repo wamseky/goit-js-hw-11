@@ -36,6 +36,7 @@ function handleSubmit(event) {
 
   if (searchQuery === '') {
     alert('Enter your request')
+    container.innerHTML = ""
     return;
   }
 };
