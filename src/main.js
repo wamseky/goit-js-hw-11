@@ -1,5 +1,8 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+import iziToast from "izitoast";
+import 'izitoast/dist/css/iziToast.min.css';
+
 
 import { fetchData } from "./js/pixabay-api";
 import { renderMarkup } from "./js/render-functions";
@@ -22,7 +25,16 @@ function onSubmit(event) {
   searchQuery = form.elements.searchQuery.value.trim();
 
   if (searchQuery === '') {
-    alert('Enter your request')
+    iziToast.error({
+      fontSize: 'large',
+      close: false,
+      position: 'topRight',
+      messageColor: 'white',
+      timeout: 2000,
+      backgroundColor: 'red',
+      message:
+        'Enter your request',
+    });
     container.innerHTML = ""
     return;
   }
